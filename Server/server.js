@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3001;
+const PORT = 5000;
 
 app.use(cors());
 
@@ -20,11 +20,11 @@ app.get('/api/table', (req, res) => {
 
 // Sample data for the pie chart
 const pieChartData = [
-  { label: 'Category A', value: 30 },
-  { label: 'Category B', value: 20 },
-  { label: 'Category C', value: 15 },
-  { label: 'Category D', value: 25 },
-  { label: 'Category E', value: 10 },
+  { label: 'Category A', value: 30, type: "Category A" },
+  { label: 'Category B', value: 20, type: "Category B" },
+  { label: 'Category C', value: 15, type: "Category C" },
+  { label: 'Category D', value: 25 , type: "Category D"},
+  { label: 'Category E', value: 10 , type: "Category E"},
 ];
 
 app.get('/api/pie-chart', (req, res) => {
@@ -41,7 +41,12 @@ const graphData = [
 ];
 
 app.get('/api/graph', (req, res) => {
+  console.log(graphData);
   res.json(graphData);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`)
 });
 
 app.listen(PORT, () => {
